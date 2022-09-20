@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import datasc
-from flask_jsonpify import jsonpify
-from werkzeug.datastructures import  FileStorage
 from flask import Response
 import io
 buffer = io.BytesIO()
@@ -21,7 +19,8 @@ def uploader_file():
     if request.method == 'POST':
         f = request.files['file']
         f.save(secure_filename(f.filename))
-        df = datasc.data_ext()
+        # print(f.filename)
+        df = datasc.data_ext(f.filename)
         df.to_excel(buffer, index=False)
         headers = {
             'Content-Disposition': 'attachment; filename=output.xlsx',

@@ -18,8 +18,8 @@ def upload_file():
 def uploader_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(secure_filename(f.filename))
-        # print(f.filename)
+        f.save(f.filename)
+        print(f.filename)
         df = datasc.data_ext(f.filename)
         df.to_excel(buffer, index=False)
         headers = {

@@ -34,7 +34,7 @@ def uploader_file():
         # }
         #
         # return Response(buffer.getvalue(), mimetype='application/vnd.ms-excel', headers=headers)
-        return render_template('s3_excel_table.html', sheet=sheet)
+        return render_template('excel_table.html', sheet=sheet)
 
 @app.route('/download', methods=['GET', 'POST'])
 def download_file():

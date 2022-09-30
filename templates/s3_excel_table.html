@@ -1,3 +1,22 @@
+
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='c.css') }}">
+</head>
+<body>
+<!--<a style="padding:10px;display:block;" href="../out.xlsx" target="_blank">Download</a>-->
+
+<!-- Code begins here -->
+<!--<a href="../out.xlsx">Download</a>-->
+
+<a href="../download" class="float" title="Alien of earth, CC BY-SA 4.0 &lt;
+https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+   href="https://commons.wikimedia.org/wiki/File:Download-Icon.png"><img width="60" alt="Download-Icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Download-Icon.png/512px-Download-Icon.png">
+<!--<a href="../download" class="float">-->
+<i class="fa fa-plus my-float"></i>
+</a>
+
+
 <table id="demo">
   {% for row in range(1, sheet.max_row + 1) %}
   <tr>
@@ -7,3 +26,5 @@
   </tr>
   {% endfor %}
 </table>
+</body>
+</html>

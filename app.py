@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import datasc
 from openpyxl import load_workbook
@@ -8,7 +8,7 @@ buffer = io.BytesIO()
 
 app = Flask(__name__)
 
-
+out = 'out.xlsx'
 
 @app.route('/upload')
 def upload_file():
@@ -23,9 +23,9 @@ def uploader_file():
         print(f.filename)
         df = datasc.data_ext(f.filename)
         df.to_excel(buffer,index=False)
-        df.to_excel(r'out.xlsx', index=False)
+        df.to_excel(out, index=False)
 
-        book = load_workbook("out.xlsx")
+        book = load_workbook(out)
         sheet = book.active
 
         # headers = {
@@ -35,6 +35,12 @@ def uploader_file():
         #
         # return Response(buffer.getvalue(), mimetype='application/vnd.ms-excel', headers=headers)
         return render_template('s3_excel_table.html', sheet=sheet)
+
+@app.route('/download', methods=['GET', 'POST'])
+def download_file():
+    if request.method == 'GET':
+
+        return send_file(out, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)

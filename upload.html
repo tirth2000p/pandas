@@ -1,15 +1,34 @@
-<html>
-   <body>
-      <form action = "http://localhost:5000/uploader" method = "POST"
-         enctype = "multipart/form-data">
-         <br>
-          <br>
-          <br>
-         <input type = "file" name = "file" />
-          <br>
-          <br>
-          <br>
-         <input type = "submit"/>
-      </form>
-   </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <nav>
+            <h1>Clinical Medical Notes</h1>
+        </nav>
+    </div>
+    <div class="upload">
+        <h2>Upload Document</h2>
+        
+    </div>
+    <div class="upload">
+        <p>Please only attach .xlsx, .xls</p>
+    </div>
+
+    <div class="container">
+        <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+            <input type="file" name = "file" class="button-upload">
+            <input type="submit">
+        </form>
+
+    </div>
+    
+    
+</body>
 </html>

@@ -1,10 +1,7 @@
 import jpype
-
-# import asposecells
-
-# load XLSX workbook
-
-from asposecells.api import Workbook
+import asposecells
+jpype.startJVM()
+from asposecells.api import Workbook, FileFormatType
 
 wb = Workbook("out.xlsx")
 

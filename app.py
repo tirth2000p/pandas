@@ -1,7 +1,9 @@
+import cells as cells
 from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import datasc
-from openpyxl import load_workbook
+import asposecells
+from openpyxl import load_workbook, Workbook
 from flask import Response
 import io
 buffer = io.BytesIO()
@@ -28,7 +30,11 @@ def uploader_file():
         book = load_workbook(out)
         sheet = book.active
 
+        # load XLSX workbook
+        wb = Workbook("out.xlsx")
 
+        # save workbook as HTML file
+        wb.save("templates/workbook.html")
 
 
         # headers = {
@@ -37,7 +43,7 @@ def uploader_file():
         # }
         #
         # return Response(buffer.getvalue(), mimetype='application/vnd.ms-excel', headers=headers)
-        return render_template('excel_table.html', sheet=sheet)
+        return render_template('workbook.html', sheet=sheet)
 
 @app.route('/download', methods=['GET', 'POST'])
 def download_file():

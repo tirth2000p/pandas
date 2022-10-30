@@ -26,16 +26,8 @@ def uploader_file():
         df = datasc.data_ext(f.filename)
         df.to_excel(buffer,index=False)
         df.to_excel(out, index=False)
-
         book = load_workbook(out)
         sheet = book.active
-
-        # load XLSX workbook
-        wb = Workbook("out.xlsx")
-
-        # save workbook as HTML file
-        wb.save("templates/workbook.html")
-
 
         # headers = {
         #     'Content-Disposition': 'attachment; filename=output.xlsx',
@@ -43,7 +35,8 @@ def uploader_file():
         # }
         #
         # return Response(buffer.getvalue(), mimetype='application/vnd.ms-excel', headers=headers)
-        return render_template('workbook.html', sheet=sheet)
+        return render_template('excel_table.html', sheet=sheet)
+
 
 @app.route('/download', methods=['GET', 'POST'])
 def download_file():
